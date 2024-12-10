@@ -1,0 +1,1144 @@
+task 1 at 11
+task 2 at 148
+task 3 at 269
+task 4 at 406
+task 5 at 638
+task 6 at 756
+task 7 at 821
+task 8 at 985
+
+
+1A - DEFAULT CONSTRUCTOR
+class DefaultConstructor
+{
+    int college_id;
+	String college_name;
+	String city;
+
+DefaultConstructor()
+{
+    college_id = 846;
+	college_name = "GRIET";
+	city = "Hyderabad";
+}
+
+void display()
+{
+    System.out.println("College ID:" + college_id);
+    System.out.println("College Name:" + college_name);
+    System.out.println("City:" + city);
+}
+
+public static void main(String args[])
+{
+    DefaultConstructor d = new DefaultConstructor();
+    d.display();
+}
+}
+
+1B - PARAMETERIZED CONSTRUCTOR
+import java.util.Scanner;
+public class ParamConstructor {
+    int studentid;
+    String studentname;
+    
+     public ParamConstructor() {
+        studentid= 125;
+        studentname="Sindhu";
+     }
+    public ParamConstructor(int id,String name) {
+        studentid=id;
+        studentname=name;
+    }
+    void showDetails1() {
+        System.out.println("The Default value of the student is:");
+        System.out.println("Sid: "+studentid);
+        System.out.println("Sname: "+studentname);
+    }
+    void showDetails2() {
+        System.out.println("Sid: "+studentid);
+        String[] parts = studentname.split(" ");
+        System.out.println("Name of the Student is:");
+        if(parts.length==1)
+         { System.out.println("firstname: "+parts[0]); }
+        else if(parts.length==2)
+         { System.out.println("firstname: "+parts[0]); 
+           System.out.println("middlename: "+parts[1]); }
+        else
+         { System.out.println("firstname: "+parts[0]); 
+           System.out.println("middlename: "+parts[1]);
+           System.out.println("lastname: "+parts[2]); }
+   }
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       int id = sc.nextInt();
+       sc.nextLine();
+       String name = sc.nextLine();
+       sc.close();
+       ParamConstructor obj1= new ParamConstructor();
+       obj1.showDetails1();
+       ParamConstructor obj2= new ParamConstructor(id,name);
+       obj2.showDetails2();
+    }
+    
+}
+
+1C - METHOD OVERLOADING
+import java.util.Scanner;
+class Demo {
+    public void display(char c)
+    { System.out.println("Value of character = "+c); }
+    public void display(char c, int num)
+    { System.out.println("Value of character = "+c);
+      System.out.println("Value of Integer number = "+num);}
+    public void display(int num, double d)
+    { System.out.println("Value of Integer number = "+num);
+      System.out.println("Value of Floating Number = "+d); }
+}
+public class MethodOverloading {
+    public static void main(String[] args) {
+    Scanner sc =new Scanner(System.in);
+    char c = sc.next().charAt(0);
+    sc.nextLine();
+    int num = sc.nextInt();
+    sc.nextLine();
+    double d = sc.nextDouble();
+    sc.close();
+    Demo obj = new Demo();
+    obj.display(c);
+    obj.display(c,num);
+    obj.display(num,d);
+    
+ } 
+}
+
+1D - CONSTRUCTOR OVERLOADING
+import java.util.Scanner;
+public class ConstructorOverloading {
+    int i,j;
+    public ConstructorOverloading() {
+        int i = 100;
+        int j = 200;
+        System.out.println("Inside default constructor");
+        System.out.println("Value of i: "+i+" and j: "+j);
+    }
+     public ConstructorOverloading(int b) {
+         System.out.println("Inside single parameter constructor with int value = "+b);
+     }
+     public ConstructorOverloading(String s) {
+         System.out.println("Inside single parameter constructor with String object");
+         System.out.println("String Value = "+s);
+     }
+     public ConstructorOverloading(int b, double d) {
+         System.out.println("Inside double parameter constructor value of p = "+b+" and k = "+d);
+     }
+     public static void main(String[] args ) {
+         Scanner sc = new Scanner(System.in);
+         int b =sc.nextInt();
+         sc.nextLine();
+         String s =sc.nextLine();
+         double  d= sc.nextDouble();
+         ConstructorOverloading obj1 = new ConstructorOverloading();
+         ConstructorOverloading obj2 = new ConstructorOverloading(b);
+         ConstructorOverloading obj3 = new ConstructorOverloading(s);
+         ConstructorOverloading obj4 = new ConstructorOverloading(b,d);
+     }
+}
+
+2A - PALINDROME
+import java.util.Scanner;
+public class palindrome
+{
+  public static boolean isPalindrome(String str)
+  {
+      int low = 0;
+      int high = str.length()-1;
+      while(low<high)
+      {
+          if(str.charAt(low)!=str.charAt(high))
+          return false;
+          
+          low++;
+          high--;
+          
+      }
+      return true;
+  }
+  
+  public static void main(String args[])
+  {
+      Scanner s = new Scanner(System.in);
+      String sr = s.nextLine();
+      palindrome t = new palindrome();
+      boolean res = t.isPalindrome(sr);
+      if(res)
+      {
+          System.out.println("string "+sr+" is palindrome");
+      }
+      else 
+      {
+          System.out.println("string "+sr+" is not palindrome");
+      }
+      s.close();
+  }
+}
+
+2B - STRING ASCENDING ORDER
+import java.util.Scanner;
+public class sort
+{
+    public static void main(String args[])
+    {
+        int n;
+        String temp;
+        Scanner s = new Scanner(System.in);
+        n = s.nextInt();
+        s.nextLine();
+        String names[] = new String[n];
+        
+        for(int i=0;i<n;i++)
+        {
+            names[i] = s.nextLine();
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(names[i].compareTo(names[j])>0)
+                {
+                    temp = names[i];
+                    names[i] = names[j];
+                    names[j] = temp;
+                }
+            }
+        }
+        System.out.print("Names in Sorted Order:");
+        for(int i=0;i<n-1;i++)
+        {
+            System.out.print(names[i] + ",");
+        }
+        System.out.print(names[n-1]);
+    }
+}
+
+2C  - STRING TOKENIZER
+
+import java.util.*;
+public class token
+{
+    public static void main(String args[])
+    {
+        Scanner so = new Scanner(System.in);
+        String str = so.nextLine();
+        
+        StringTokenizer str1 = new StringTokenizer(str," ");
+        
+        System.out.println("Total Number of tokens:"+str1.countTokens());
+        int sum=0;
+        while (str1.hasMoreTokens())
+        {
+            String temp = str1.nextToken();
+            /*if (isDigit(temp))
+            {
+                System.out.print(temp+ " ");
+                sum+= Integer.parseInt(temp);
+            }
+            else
+            {
+                System.out.println("non integer is encountered. terminated.");
+                System.exit(0);
+            }*/
+            
+            try{
+                
+                sum+= Integer.parseInt(temp);
+                System.out.print(temp+ " ");
+            }catch( Exception e)
+            {
+                System.out.println("\nnon integer is encountered. terminated.");
+                System.exit(0);
+            }
+        }
+        System.out.println("\nSum of tokens :"+sum);
+        
+        
+        
+    }
+}
+
+3A - THIS
+import java.util.Scanner;
+class this_keyword
+{
+   int i;
+  public  void display1(int local)
+    {
+        local=90;
+        this.i=100;
+         System.out.println("Value of Instance variable  :"+i);
+         System.out.println("Value of Local variable  :"+local);
+        
+    }
+    
+ public  void display2()
+    {
+        int local=40;
+                 System.out.println("Value of Instance variable :"+i);
+         System.out.println("Value of Local variable z:"+local);
+        
+    }
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+         this_keyword t=new this_keyword();
+        int local=s.nextInt();
+        t.i=s.nextInt();
+        System.out.println("Value of Instance variable in main  :"+t.i);
+        System.out.println("Value of Local variable in main  :"+local);
+       
+        t.display1(local);
+        t.display2();
+        s.close();
+        
+        
+    }
+}
+
+3B - SUPER 
+import java.util.Scanner;
+class Parent
+{
+   protected int i;
+    public void method(Scanner s)
+    {
+       
+        this.i=s.nextInt();
+        
+    }
+}
+
+class Child extends Parent
+{
+    int j;
+    public void method(Scanner s)
+    {
+        super.method(s);
+        
+          this.j=s.nextInt();
+        
+    }
+    
+    public void display()
+    {
+        System.out.println("Accessing Parentclass variable using super keyword: "+i);
+         System.out.println("Accessing subclass variable: "+this.j);
+        
+    }
+}
+
+public class superExample
+{  
+    public static void main(String[] args){
+          Scanner s=new Scanner(System.in);
+    Child obj = new Child();
+    obj.method(s);
+    obj.display();
+    s.close();
+    }
+    
+}
+
+3C - STATIC
+
+import java.util.Scanner;
+
+class A
+{
+    static int count;
+    static   int c=0;
+    public A(){
+       c++;
+        count++;
+        System.out.println("c"+c+" count="+count);
+    }
+}
+
+ class staticCounter{
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        A.count=s.nextInt();
+        
+       new A();
+        
+         new A();
+         
+      new A();
+          
+   new A();
+       
+        
+        
+    }
+}
+
+3D - FINAL
+import java.util.Scanner;
+class FinalKeyword
+{
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        final int x=s.nextInt();
+        System.out.println(x);
+        // try
+        // {
+        //     x=100;
+        // }
+        // catch(Exception e)
+        // {
+        //     System.out.println(e.getMessage());
+        // }
+        s.close();
+    }
+}
+
+4A - METHOD OVERRIDING
+
+import java.util.Scanner;
+class Bank
+{
+    public int ROI()
+    {
+        return 3 ;
+    }
+}
+
+class SBI extends Bank
+{
+   @Override public int ROI()
+    {
+        return 8;
+    }
+           
+}
+
+class ICICI extends Bank
+{
+    @Override public int ROI()
+    {
+        return 7;
+    }
+}
+
+class Axis extends Bank
+{
+    @Override public int ROI()
+    {
+        return 9;
+    }
+}
+
+public class MethodOverriding
+{
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        int x=s.nextInt();
+        if(x==1)
+        {
+            Bank obj = new SBI();
+             int y=  obj.ROI();
+             System.out.println("SBI rate of interest="+y+"%");
+        }
+        else if(x==2)
+        {
+            Bank obj = new ICICI();
+              int y=  obj.ROI();
+             System.out.println("ICICI rate of interest="+y+"%");
+        }
+        else if(x==3)
+        {
+            Bank obj = new Axis();
+              int y=  obj.ROI();
+             System.out.println("Axis rate of interest="+y+"%");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+     
+    }
+}
+
+4B - DYNAMIC METHOD
+
+import java.util.Scanner ;
+class A
+{
+    int x;
+    A(int x)
+    {
+        this.x=x;
+    }
+    
+        
+    void func()
+    {
+        System.out.println("Number in A: "+x);
+    }
+}
+
+class B extends A
+{
+    B(int x)
+    {
+        super(x+100);
+    }
+    
+    @Override
+    void func()
+    {
+        System.out.println("Number in B: "+x);
+    }
+}
+
+class C extends A
+{
+    C(int x)
+    {
+        super(x+200);
+    }
+    
+    @Override
+    void func()
+    {
+        System.out.println("Number in C: "+x);
+    }
+}
+
+public class DynamicMethod
+{
+    public static void main (String [] args)
+    {
+        Scanner s = new Scanner(System.in);
+        int a = s.nextInt();
+        int b = s.nextInt();
+        int c = s.nextInt(); s.close();
+        A t = new A(a);
+        t.func();
+        t=new B(b);
+        t.func();
+        t=new C(c);
+        
+        t.func(); 
+    }
+
+}
+
+4C - MULTIPLE INHERITANCE
+
+import java.util.Scanner;
+interface Exam
+{
+    void percentCall();
+}
+class Student implements Exam
+{
+    int rollno;
+    String name;
+    int marks1,marks2;
+    
+    Student(int rollno, String name , int marks1 , int marks2)
+    {
+        this.rollno = rollno; 
+        this.name=name;
+        this.marks1=marks1; 
+        this.marks2=marks2;
+    }
+    
+    public void percentCall()
+    {
+        double percentage =(marks1+marks2)/200.0 * 100.0;
+        System.out.println("Name of Student: "+name);
+        System.out.println("Roll No. of Student: "+rollno);
+        System.out.println("Marks of Subject 1: "+marks1);
+        System.out.println("Marks of Subject 2: "+marks2);
+        System.out.println("Percentage: "+percentage);
+    }
+}
+
+public class MultipleInheritance
+{
+    public static void main (String [] args)
+    {
+        Scanner s=new Scanner (System.in);
+        String name=s.nextLine();
+        int rollno=s.nextInt();
+        int marks1=s.nextInt();
+        int marks2=s.nextInt();
+        Student obj=new Student (rollno,name,marks1,marks2);
+        obj.percentCall();
+        s.close();
+    }
+}
+
+4D - ACCESS SPECIFIERS
+
+import java.util.Scanner; import java.util.InputMismatchException;
+class A
+{
+    private int a;
+    public int b;
+    protected int c;
+    int d;
+    public void setA(int a)
+    {
+        this.a=a;
+    }
+    
+    public void print(){
+     System.out.println(a+" "+b+" "+c+" "+d);
+    }
+}
+
+class B
+{
+    A obj;
+    B(A obj)
+    {
+        this.obj=obj;
+    }
+    public void invokeA(){
+      obj.print();
+    }
+}
+
+public class AccessSpecifier
+{
+    public static void main (String [] args)
+    {
+      try{  
+        Scanner s=new Scanner (System.in);
+        A obj = new A();
+        obj.setA(s.nextInt()); obj.b=s.nextInt();
+        obj.c=s.nextInt(); obj.d=s.nextInt();
+        B objj=new B(obj);
+       
+        objj.invokeA(); s.close();
+      }
+      catch(InputMismatchException e)
+      {
+          System.out.println("Enter Only Integers");
+      }
+    }
+}
+
+
+5A - FILE INFO
+import java.io.File;
+import java.util.Scanner;
+public class FileInformation
+{
+    public static void main (String[] args) {
+        Scanner s=new Scanner(System.in);
+        String filename=s.nextLine();
+        File file=new File(filename);
+        if(file.exists())
+        {
+            System.out.println("File exists");
+            
+            if(file.canRead())
+            {
+                System.out.println("File is readable");
+            }
+            
+            if(file.canWrite())
+            {
+                // System.out.println();
+                 System.out.println("File is writable");
+            }
+            
+            if(file.isDirectory())
+              System.out.println("It is a directory");
+            else if(file.isFile()){
+              System.out.println("It is a file");
+              
+            System.out.println("The length of the file is "+file.length()+" bytes");
+            }
+            
+            // System.out.println("Last modified:"+new java.util.Date(file.lastModified()));
+        }
+        else
+        {
+             System.out.println("File does not exist");
+        }
+        
+        s.close();
+    }
+}
+
+5B - READING FILE
+
+import java.util.*;
+import java.io.*;
+
+public class FileReading
+{
+    public static void main (String[] args) {
+        Scanner s=new Scanner(System.in);
+        String filename=s.nextLine();
+        try
+        {
+            BufferedReader br=new BufferedReader(new FileReader(filename));
+            String line;
+            int lineNumber=1;
+            while((line=br.readLine())!=null)
+            {
+                System.out.println(lineNumber+": "+line);
+                lineNumber++;
+            }
+        }
+        catch(IOException e)
+        {
+            System.out.println("An error occured while reading the file: "+e.getMessage());
+        }
+        finally
+        {
+            s.close();
+        }
+    }
+}
+
+5C - FILE COUNT
+
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.StringTokenizer;
+import java.util.Scanner;
+public class WordCount
+{
+    public static void main (String[] args) {
+        Scanner s=new Scanner(System.in);
+        String filename=s.nextLine();
+        int lineCount=0;
+        int wordCount=0;
+        int charCount=2;
+        try
+        {
+            BufferedReader br=new BufferedReader(new FileReader(filename));
+            String line;
+            while((line=br.readLine())!=null)
+            {
+                lineCount++;
+                charCount+=line.length();
+                StringTokenizer token=new StringTokenizer(line);
+                wordCount+=token.countTokens();
+            }
+            
+            System.out.println("The number of characters is "+charCount);
+            System.out.println("The number of words is "+wordCount);
+            System.out.println("The number of lines is "+lineCount);
+            System.out.println("");
+        }
+        catch(IOException e)
+        {
+            System.out.println("An error occured while reading the file "+e.getMessage());
+        }
+        finally
+        {
+            s.close();
+        }
+    }
+}
+
+6A - CHECKED EXCEPTIONS
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+public class checkedException
+{
+    public static void main (String[] args) {
+        Scanner s=new Scanner(System.in);
+        String filepath=s.nextLine();
+        try(BufferedReader read=new BufferedReader(new FileReader(filepath)))
+        {
+            String line;
+            while((line=read.readLine())!=null)
+            {
+                System.out.println(line);
+            }
+        }
+        catch(IOException e)
+        {
+            System.out.println("Error reading file");
+        }
+        finally
+        {
+            s.close();
+        }
+    }
+}
+
+6B - UNCHECKED EXCEPTIONS
+
+import java.util.Scanner;
+public class uncheckedException
+{
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        try
+        {
+            int size=s.nextInt();
+            if(size<0){
+              System.out.println("Array size cannot be negative");
+              return;
+            }
+            int [] arr=new int[size];
+            for(int i=0;i<size;i++)
+            {
+                arr[i]=s.nextInt();
+            }
+            int index=s.nextInt();
+            System.out.println("Element at index "+index+": "+arr[index]);
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("The specified index does not exist");
+        }
+        finally
+        {
+            s.close();
+        }
+    }
+        
+}
+
+7A - THREAD.SLEEP
+
+
+class MessagePrinter implements Runnable
+{
+    private String message;
+    private int delay;
+    public MessagePrinter(String message,int delay)
+    {
+        this.message=message;
+        this.delay=delay;
+    }
+    @Override
+    public void run()
+    {
+        try
+        {
+            while(true)
+            {
+                System.out.println(message);
+                Thread.sleep(delay);
+
+            }
+           
+        }
+        catch(InterruptedException e)
+        {
+            System.out.println("Thread interrupted: "+e.getMessage()) ;
+
+        }
+        
+    }
+}
+
+
+public class MultiThread
+{
+    public static void main(String[] args)
+    {
+        Thread thread1=new Thread(new MessagePrinter("Good Morning",1000));
+        Thread thread2=new Thread(new MessagePrinter("Hello",2000));
+        Thread thread3=new Thread(new MessagePrinter("Welcome",3000));
+        
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        
+    }
+}
+
+7B - PRODUCER CONSUMER
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+class Buffer
+{
+    private Queue<Integer> bufferQueue=new LinkedList<>();
+    private int capacity;
+    public Buffer(int capacity)
+    {
+        this.capacity=capacity;
+    }
+    
+    public synchronized void produce(int item) throws InterruptedException
+    {
+        while(bufferQueue.size()==capacity)
+        {
+            wait();
+        }
+        bufferQueue.add(item);
+        System.out.println("Produced "+item);
+        notify();
+    }
+    
+    public synchronized int consume() throws InterruptedException
+    {
+        while(bufferQueue.isEmpty())
+        {
+            wait();
+        }
+        
+        int item=bufferQueue.poll();
+        System.out.println("Consumed "+item);
+        notify();
+        return item;
+    }
+}
+
+
+class Producer implements Runnable
+{
+    private Buffer buffer;
+    public Producer(Buffer buffer)
+    {
+        this.buffer=buffer;
+    }
+    
+    @Override
+    public void run()
+    {
+        int item=0;
+        while(true)
+        {
+            try
+            {
+                buffer.produce(item++);
+                Thread.sleep(500);
+            }
+            catch(InterruptedException e)
+            {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+    }
+}
+
+class Consumer implements Runnable
+{
+    private Buffer buffer;
+    public Consumer(Buffer buffer)
+    {
+        this.buffer=buffer;
+    }
+    
+    @Override
+    public void run()
+    {
+        while(true)
+        {
+            try
+            {
+                buffer.consume();
+                Thread.sleep(1000);
+                
+            }
+            catch(InterruptedException e)
+            {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+    }
+}
+
+public class ProducerConsumer
+{
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+       // System.out.print("Enter buffer capacity: ");
+        int capacity=s.nextInt();
+        Buffer buffer=new Buffer(capacity);
+        
+        Thread producerThread=new Thread(new Producer(buffer));
+        Thread consumerThread=new Thread(new Consumer(buffer));
+        
+        producerThread.start();
+        consumerThread.start();
+        
+    }
+}
+
+8A - ARRAY LIST
+
+import java.util.*;
+class ArrayListDemo{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer>arr = new ArrayList<>();
+        while(true){
+            int ch = sc.nextInt();
+            if(ch == 2|| ch == 3||ch == 4){
+                if(arr.isEmpty()){
+                          System.out.println("The list is empty. Please add elements first.");
+                          ch = sc.nextInt();
+                        }
+            }
+            switch(ch){
+                case 1:int x = sc.nextInt();
+                      for(int i = 0;i<x;i++){
+                          int temp = sc.nextInt();
+                          arr.add(temp);
+                      }
+                      break;
+                case 2: 
+                        int val = sc.nextInt();
+                        int idx = sc.nextInt();
+                        if(idx<0 || idx>arr.size()){
+                            System.out.println("Please enter a valid index");
+                        }else{
+                            arr.set(idx,val);
+                        }
+                        break;
+                case 3: int r = sc.nextInt();
+                        if(r<0 || r>arr.size()){
+                            System.out.println("Please enter a valid index");
+                        }else{
+                            arr.remove(r);
+                            System.out.println("Element removed.");
+                        }
+                        break;
+                case 4:System.out.println("Current ArrayList: "+arr);
+                       break;
+                case 5:System.out.println("Exiting...");
+                       return;
+                default:System.out.println("Invalid choice");
+            }
+        }
+    }
+}
+
+8B - VECTOR
+
+import java.util.*;
+import java.io.*;
+class VectorDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Vector v = new Vector(n);
+        for(int i=0;i<n;i++)
+        {
+            String ele = sc.next();
+            v.add(ele);
+        }
+        System.out.println("Elements are:");
+        for(int i=0;i<n-1;i++)
+        {
+            System.out.print(v.get(i)+" ");
+        }
+        System.out.print(v.get(n-1));
+    }
+}
+
+8C - HASHTABLE
+
+import java.util.*;
+public class HashTableDemo
+{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        sc.nextLine();
+        Hashtable<String,String> ht=new Hashtable<>();
+        for(int i=0;i<n;i++){
+            String key=sc.nextLine();
+            String value=sc.nextLine();
+            ht.put(key,value);
+        }
+        System.out.println("Hashtable contents:");
+        for(Map.Entry<String,String> entry:ht.entrySet()){
+            System.out.println("Key: "+entry.getKey()+" Value: "+entry.getValue());
+        }
+        
+    }
+}
+
+8D - STACK
+
+import java.util.Scanner;
+import java.util.Stack;
+public class StackDemo
+{
+    public static void main(String[] args)
+    {
+        int ch;
+        String value;
+        Scanner s=new Scanner(System.in);
+        Stack<String> st = new Stack<>();
+        while(true)
+        {
+            ch=s.nextInt(); s.nextLine();
+            switch(ch)
+            {
+                case 1: value=s.nextLine();
+                       st.push(value);
+                       break;
+                
+                case 2: if(st.isEmpty())
+                           System.out.println("Stack is empty. Nothing to pop.");
+                        else
+                        {
+                          String x=  st.pop();
+                            System.out.println("Popped element:"+x);
+                        }
+                        break;
+                    
+                case 3: if(st.isEmpty())
+                           System.out.println("Stack is empty. Nothing to peek.");
+                        else
+                        {
+                            System.out.print("Top element of the stack is \"");
+                            String peek=st.get(st.size()-1);
+                            System.out.println(peek+"\"");
+                        }
+                        break;
+                    
+                case 4:if(st.isEmpty())
+                         System.out.println("The stack is empty.");
+                        else
+                         System.out.println("The stack is not empty.");
+                        break;
+                    
+                case 5:if(!st.isEmpty()){
+                    System.out.println("Elements in the stack:");
+                    for(int i=0;i<st.size();i++){
+                        System.out.println(st.get(i));
+                    }
+                }
+                else
+                {
+                    System.out.println("Stack is empty. No elements to display.");
+                }
+                break;
+                    
+                case 6:System.out.println("Exiting program."); return;
+            }
+        }
+    }
+}
